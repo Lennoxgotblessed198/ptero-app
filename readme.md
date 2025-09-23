@@ -1,0 +1,1 @@
+this doesnt contain any licensen this its meant to be used for pterodactyl hosting panel but you can change the code how ever you like
