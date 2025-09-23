@@ -1,8 +1,31 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
 app.disableHardwareAcceleration();
 const path = require('path');
 
 let mainWindow; 
+
+try {
+  app.commandLine.appendSwitch('enable-features', 'WebContentsForceDark');
+  app.commandLine.appendSwitch('force-dark-mode');
+} catch (_) {}
+nativeTheme.themeSource = 'dark';
+
+const DARK_CSS = `:root { color-scheme: dark !important; }
+html, body { background:#090909 !important; color:#d0d0d0 !important; }
+img, picture, video, iframe { filter: brightness(.85) contrast(1.05); }
+::-webkit-scrollbar { width:10px; }
+::-webkit-scrollbar-track { background:#0d0d0d; }
+::-webkit-scrollbar-thumb { background:#1e1e1e; border-radius:20px; }
+::-webkit-scrollbar-thumb:hover { background:#272727; }`;
+
+function injectDarkCSS(contents) {
+  try { contents.insertCSS(DARK_CSS).catch(()=>{}); } catch (_) {}
+  try { contents.setBackgroundColor('#090909'); } catch (_) {}
+}
+
+app.on('web-contents-created', (_e, contents) => {
+  injectDarkCSS(contents);
+});
 
 function createMainWindow(initialDomain) {
   if (mainWindow) return;
@@ -24,6 +47,7 @@ function createMainWindow(initialDomain) {
   mainWindow.loadFile(path.join(__dirname, 'src', 'main', 'index.html'));
   mainWindow.webContents.on('did-finish-load', () => {
     if (initialDomain) mainWindow.webContents.send('set-domain', initialDomain);
+    injectDarkCSS(mainWindow.webContents);
   });
   mainWindow.on('closed', () => { mainWindow = null; });
 }
