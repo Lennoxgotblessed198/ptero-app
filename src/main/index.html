@@ -13,13 +13,31 @@
             <button id="min-btn" class="traffic traffic-min" aria-label="Minimize"></button>
             <button id="max-btn" class="traffic traffic-max" aria-label="Maximize"></button>
         </div>
-        <span class="title">Ptero App</span>
-        <div class="spacer"></div>
+        <span class="title" id="title-text">Loading...</span>
+        <div class="titlebar-right"></div>
     </div>
 
-    <div id="webview-container" class="content">
-        <webview id="panel-view" src="about:blank" allowpopups style="width:100%;height:100%" preload="preload.js"></webview>
-    </div>
+        <div id="login-view" class="content" style="display:none;">
+            <div class="login-wrapper">
+                <div class="login-form">
+                    <h1>Enter Your Domain</h1>
+                    <p>Enter the domain of your hosting panel to access it as an app.</p>
+                    <form id="domain-form">
+                        <div class="input-group">
+                            <label for="domain-input">Domain:</label>
+                            <input type="text" id="domain-input" placeholder="panel.example.com" required />
+                        </div>
+                        <div class="actions">
+                            <button type="submit" class="submit-btn">Connect</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="webview-container" class="content">
+            <webview id="panel-view" src="about:blank" allowpopups style="width:100%;height:100%" preload="preload.js"></webview>
+        </div>
 
     <script src="script.js"></script>
 </body>

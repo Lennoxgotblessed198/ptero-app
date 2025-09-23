@@ -16,7 +16,6 @@ document.getElementById('close-btn').addEventListener('click', () => {
     ipcRenderer.invoke('window-close');
 });
 
-// Domain form submission
 document.getElementById('domain-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
