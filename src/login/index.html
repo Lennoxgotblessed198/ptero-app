@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Ptero App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="custom-titlebar">
+        <div class="traffic-lights">
+            <button id="close-btn" class="traffic traffic-close" aria-label="Close"></button>
+            <button id="min-btn" class="traffic traffic-min" aria-label="Minimize"></button>
+        </div>
+        <span class="title">Ptero App — Login</span>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Enter Your Domain</h1>
+            <p>Enter the domain of your hosting panel to access it as an app.</p>
+            
+            <form id="domain-form">
+                <div class="input-group">
+                    <label for="domain-input">Domain:</label>
+                    <input type="text" id="domain-input" placeholder="panel.example.com" required>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="submit-btn">Connect</button>
+                    <button type="button" id="clear-btn" class="clear-btn" title="Clear saved domain">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

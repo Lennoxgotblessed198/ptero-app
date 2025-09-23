@@ -1,0 +1,39 @@
+{
+  "name": "ptero-app",
+  "version": "1.0.0",
+  "description": "Electron app for hosting panels",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "dist": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.example.pteroapp",
+    "productName": "Ptero App",
+    "files": [
+      "main.js",
+      "src/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "main.js"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^27.1.0",
+    "electron-builder": "^24.13.3"
+  },
+  "author": "",
+  "license": "MIT"
+}
