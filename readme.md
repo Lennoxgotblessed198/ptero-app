@@ -34,3 +34,7 @@ The script auto-detects OS and builds (Linux AppImage, Windows NSIS, macOS dmg) 
 ## Notes
 
 Config is stored in Electron's userData directory as config.json.
+
+## Warning
+
+If you want to Compile on Windows you have to open Powershell as Administrator and run `npm run compile`
